@@ -59,11 +59,11 @@ type ArticleData struct {
 }
 
 type Article struct {
-	Content     string // 有markdown则存markdown，没有则存html
 	Title       string
 	CreateTime  int64
 	FormatTime  string
 	Categories  string
 	Tags        []string
 	ContentType string
+	Content     string // 有markdown则存markdown，没有则存html
 }

@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"time"
 
 	"github.com/spf13/viper"
@@ -15,7 +16,7 @@ var (
 	blogNum  int // 博客数量, 爬列表的时候用
 )
 
-func init() {
+func Init() {
 	viper.SetConfigName("conf")
 	viper.AddConfigPath(".")
 	err := viper.ReadInConfig()
@@ -37,6 +38,7 @@ func init() {
 }
 
 func main() {
+	Init()
 	list := getArticleList(username)
 	// getArticleContent(list[0])
 	articles := make([]Article, 0, len(list))
@@ -48,4 +50,8 @@ func main() {
 	}
 	b, _ := json.Marshal(articles)
 	ioutil.WriteFile("articles.json", b, 0o644)
+	os.Mkdir("articles", 0o755)
+	for _, article := range articles {
+		toMarkdown(article, "articles")
+	}
 }
