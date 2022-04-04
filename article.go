@@ -4,23 +4,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"regexp"
 	"strings"
 )
 
 const (
 	articleApi = `https://blog-console-api.csdn.net/v1/editor/getArticle?id=%s`
 )
-
-var categoryRegexp *regexp.Regexp
-
-func init() {
-	var err error
-	categoryRegexp, err = regexp.Compile(`tag-link.*>(.*?)<`)
-	if err != nil {
-		panic(err)
-	}
-}
 
 func getArticle(meta Meta) Article {
 	articleData := getArticleContent(meta)
