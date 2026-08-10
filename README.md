@@ -1,3 +1,5 @@
+
+
 # 导出csdn博客markdown源码
 ## 背景
 不想继续在粪坑网站写博客了，于是自己[用Vuepress搭了一个静态博客](https://blog.apale7.cn/)，配合github pages和服务器使用效果还挺不错。但之前写的博客基本全在CSDN，想导出来，人工一篇一篇复制就太累了，于是用go写了个爬虫自动把自己csdn上的所有文章的markdown源码导出并迁移到新站点上。这也应该是我CSDN上的最后一篇博客
@@ -22,6 +24,8 @@
   - 直接下载对应的release也行
 - 填写conf.yml配置文件
 - 运行
+
+运行后会在当前目录生成 `articles.json` 以及 `articles` 文件夹，导出的 markdown 文件将保存在 `articles` 目录中。
 
 *conf.yml必须与可执行文件在同一目录下*
 
